@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="632px" height="78px" viewBox="0 0 632 78" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 2</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.482353 0 0 0 0 0.011765 0 0 0 0 0.972549 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+        <filter id="filter-2">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.011765 0 0 0 0 0.498039 0 0 0 0 0.023529 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="main-page" transform="translate(-622.000000, -75.000000)">
+            <g id="Group-2" transform="translate(622.500000, 75.000000)">
+                <g id="Group-3" transform="translate(308.500000, 0.000000)">
+                    <g filter="url(#filter-1)" id="Group">
+                        <g>
+                            <polygon id="Path-2" fill="#D8D8D8" points="0 0 3.75294118 0 58 78 54.2470588 78"></polygon>
+                        </g>
+                    </g>
+                    <g filter="url(#filter-2)" id="Group">
+                        <g transform="translate(29.000000, 39.000000) scale(-1, 1) translate(-29.000000, -39.000000) ">
+                            <polygon id="Path-2" fill="#D8D8D8" points="0 0 3.75294118 0 58 78 54.2470588 78"></polygon>
+                        </g>
+                    </g>
+                </g>
+                <text id="BAS-MEEUWS" font-family="Poppins-ExtraLight, Poppins" font-size="50" font-weight="300" fill="#000000">
+                    <tspan x="0.2" y="56">BAS MEEUWS</tspan>
+                </text>
+                <text id="unsig#1102" font-family="Poppins-ExtraLight, Poppins" font-size="50" font-weight="300" fill="#000000">
+                    <tspan x="376.175" y="56">unsig#1102</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
