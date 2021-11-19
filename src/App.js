@@ -15,6 +15,7 @@ import Gallery 	from './Gallery';
 import Rarity 	from './Rarity';
 import Buy 		from './Buy';
 import TheBurn 	from './TheBurn';
+import Download	from './Download';
 
 // STYLES
 import GlobalStyle, { Nav, TopBar, Footer } from './styles/global';
@@ -45,6 +46,7 @@ function App() {
 					<Link to="/rarity">Rarity</Link>
 					<Link to="/buy">Buy</Link>
 					<Link to="/theburn">The Burn</Link>
+					<Link to="/download">Download Your Bas Meeuws</Link>
 				</Nav>
 
 				{/* COMPONENTS */}
@@ -75,6 +77,10 @@ function App() {
 
 					<Route path="/theburn">
 						<TheBurn/>
+					</Route>
+
+					<Route path="/download">
+						<Download/>
 					</Route>
 				</Switch>
 			</Router>

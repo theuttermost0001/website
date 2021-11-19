@@ -1,7 +1,7 @@
 
 import styled, { createGlobalStyle } from 'styled-components';
-import ImgCopy 			from '../images/copy.png';
-import ImgCopyActive 	from '../images/copy-active.png';
+// import ImgCopy 			from '../images/copy.png';
+// import ImgCopyActive 	from '../images/copy-active.png';
 
 export default createGlobalStyle `
 	* {
@@ -445,7 +445,6 @@ export const Buy = styled.div `
 				width: 26px;
 				height: 30px;
 				margin: 0 0 0 5px;
-				background-image: url(${ImgCopy});
 				background-size: 16px;
 				background-position: center;
 				background-repeat: no-repeat;
@@ -453,7 +452,6 @@ export const Buy = styled.div `
 				cursor: pointer;
 
 				&:hover {
-					background-image: url(${ImgCopyActive});
 				}
 			}
 		}
