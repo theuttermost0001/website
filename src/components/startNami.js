@@ -11,7 +11,7 @@ const addressToBech32 = async () => {
     ).to_bech32();
   };
 
-const StartButton = (props) => {
+const ConnectNamiButton = (props) => {
     // const matches = useBreakpoint();
     const [isLoading, setIsLoading] = React.useState(false);
     const [flag, setFlag] = React.useState(false);
@@ -46,7 +46,7 @@ const StartButton = (props) => {
     }, []);
   
     return connected ? (
-      <div>{connected}</div>
+      <div></div>
     ) : (
       <button
         onClick={async () => {
@@ -69,7 +69,7 @@ const StartButton = (props) => {
     );
   };
 
-  export default StartButton;
+  export default ConnectNamiButton;
 
   /**
    * 
@@ -77,9 +77,9 @@ const StartButton = (props) => {
    * @param {*} connected 
    * @returns 
    */
-  const checkStatus = async (toast, connected) => {
+  const checkStatus = async (connected) => {
     return (
-      NoNami(toast) &&
+      NoNami() &&
       (await window.cardano.enable().catch((e) => {}))
     );
   };
@@ -90,6 +90,7 @@ const StartButton = (props) => {
    */
   const NoNami = () => {
     if (window.cardano) return true;
-    alert('Nami not installed');
+    // TODO: Add a nicer message asking for Nami to be installed
+    alert('Nami not installed. Please install Nami and try again');
     return false;
   };
