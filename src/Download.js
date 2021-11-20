@@ -1,44 +1,21 @@
 import React, { useEffect, useState } from "react";
-import ConnectNamiButton from './components/startNami';
 import { Samples } from './styles/global';
 import { useStoreState } from "easy-peasy";
-import secrets from './secrets';
-
-// Cardano Numbers
-const POLICY = "a84ad65a29b6e2033025f7053273fc5b63a1bc9101244ec95e23b3af";
-
-function fromHex(hex) {
-    var str = "";
-    for (var i = 0; i < hex.length && hex.substr(i, 2) !== "00"; i += 2)
-      str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
-    return str;
-}
+import constants from './constants';
 
 function DownloadPg(props) {
     const address = useStoreState((state) => state.connection.connected);
-    const [nfts, setNFTs] = useState(null); 
+    const [nfts, setNFTs] = useState([]); 
 
     const fetchNFTs = async (address) => {
-        const assets = await fetch(
-            `https://cardano-mainnet.blockfrost.io/api/v0/addresses/${address}`,
-            { headers: { project_id: secrets.PROJECT_ID } }
-          )
+        const assets = await fetch(`${constants.BLOCKFROST.ADDRESSES}/${address}`, constants.BLOCKFROST.HEADER)
             .then((res) => res.json())
-            .then((res) => res.amount.filter((asset) => asset.unit.startsWith(POLICY)));
+            .then((res) => res.amount.filter((asset) => asset.unit.startsWith(constants.POLICY_ID)));
 
-        const promises = assets.map(asset => {
-            return fetch(
-                `https://cardano-mainnet.blockfrost.io/api/v0/assets/${asset.unit}`,
-                { headers: { project_id: secrets.PROJECT_ID } }
-            )
-            .then((res) => res.json());
-        });
-        
-        Promise.all(promises).then(results => {
-            setNFTs(results);
-        });
-
-        return assets;
+        if(assets.length > 0) {
+            const promises = assets.map(asset => fetch(`${constants.BLOCKFROST.ASSETS}/${asset.unit}`, constants.BLOCKFROST.HEADER).then((res) => res.json()));
+            Promise.all(promises).then(results => setNFTs(results));
+        }
     };
 
     useEffect(() => {
@@ -55,9 +32,8 @@ function DownloadPg(props) {
         <Samples>
 			<div className="content">
 				<div className="title" style={{'textAlign':'center'}}>Download</div>
-                <ConnectNamiButton></ConnectNamiButton>
                 <div>{address ? address : ""}</div>
-
+                {/* <p>As a Bas Meeuws holder you can connect your Nami Wallet to download a high resolution image of your NFT.</p> */}
             </div>
         </Samples> 
     )

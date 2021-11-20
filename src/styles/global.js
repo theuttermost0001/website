@@ -86,6 +86,15 @@ export const Nav = styled.div `
 			line-height: 30px;
 		}
 	}
+
+	.nami {
+		position: absolute;
+		left: calc(100vw - 150px);
+	}
+
+	.pointer {
+		cursor: pointer;
+	}
 `
 
 // MAIN HEADER

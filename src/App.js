@@ -26,6 +26,7 @@ import NftMaker from './images/icon-nftmaker.svg';
 import Cardano 	from './images/icon-cardano.svg';
 import Twitter 	from './images/icon-twitter.png';
 import Discord 	from './images/icon-discord.png';
+import ConnectNami from './Cardano/Nami';
 
 function App() {
 	return (
@@ -47,6 +48,7 @@ function App() {
 					<Link to="/buy">Buy</Link>
 					<Link to="/theburn">The Burn</Link>
 					<Link to="/download">Download Your Bas Meeuws</Link>
+					<ConnectNami></ConnectNami>
 				</Nav>
 
 				{/* COMPONENTS */}

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useStoreActions, useStoreState } from "easy-peasy";
-import Loader from '../Cardano/loader';
+import Loader from './loader';
 
 const addressToBech32 = async () => {
     await Loader.load();
@@ -11,25 +11,14 @@ const addressToBech32 = async () => {
     ).to_bech32();
   };
 
-const ConnectNamiButton = (props) => {
-    // const matches = useBreakpoint();
+const ConnectNami = (props) => {
     const [isLoading, setIsLoading] = React.useState(false);
     const [flag, setFlag] = React.useState(false);
     const connected = useStoreState((state) => state.connection.connected);
     const setConnected = useStoreActions(
       (actions) => actions.connection.setConnected
     );
-    // const toast = useToast();
-  
-    React.useEffect(() => {
-      if (connected && !flag)
-        window.cardano.onAccountChange(async () => {
-          const address = await addressToBech32();
-          setConnected(address);
-          setFlag(true);
-        });
-    }, [connected]);
-  
+      
     const checkConnection = async () => {
       if (window.cardano && (await window.cardano.isEnabled())) {
         const session = localStorage.getItem("session");
@@ -40,15 +29,26 @@ const ConnectNamiButton = (props) => {
         }
       }
     };
+
+    React.useEffect(() => {
+      if (connected && !flag)
+        window.cardano.onAccountChange(async () => {
+          const address = await addressToBech32();
+          setConnected(address);
+          console.log('Account changed');
+          console.log(`New Address: ${address}`);
+          setFlag(true);
+        });
+    }, [connected]);
   
     React.useEffect(() => {
       checkConnection();
     }, []);
   
     return connected ? (
-      <div></div>
+      <a className="nami">{connected.replace(connected.substring(7,connected.length-5), '...')}</a>
     ) : (
-      <button
+      <a className="nami pointer"
         onClick={async () => {
           setIsLoading(true);
           if (!(await checkStatus(connected))) {
@@ -64,20 +64,14 @@ const ConnectNamiButton = (props) => {
           setIsLoading(false);
         }}
       >
-        Connect
-      </button>
+        Connect Nami
+      </a>
     );
   };
 
-  export default ConnectNamiButton;
+  export default ConnectNami;
 
-  /**
-   * 
-   * @param {*} toast 
-   * @param {*} connected 
-   * @returns 
-   */
-  const checkStatus = async (connected) => {
+  const checkStatus = async () => {
     return (
       NoNami() &&
       (await window.cardano.enable().catch((e) => {}))
