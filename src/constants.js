@@ -3,7 +3,7 @@ import secrets from "./secrets";
 const BLOCKFROST_API = 'https://cardano-mainnet.blockfrost.io/api/v0';
 
 const constants = {
-    POLICY_ID: '345ee0e7737379e1b5bf1f72350adbab2d35d9f32c8f1f72bba99def',
+    POLICY_ID: 'a84ad65a29b6e2033025f7053273fc5b63a1bc9101244ec95e23b3af',
     BLOCKFROST: {
         ADDRESSES:`${BLOCKFROST_API}/addresses`,
         ASSETS: `${BLOCKFROST_API}/assets`,
